@@ -55,7 +55,7 @@ class LightningSegment {
 
 class LightningBolt {
   LightningSegment[] lightningSegments;
-  ArrayList<LightningBolt> branches = new ArrayList<LightningBolt>();
+  ArrayList <LightningBolt> branches = new ArrayList <LightningBolt>();
   float x, y, shift;
   
   LightningBolt(float m_x, float m_y, float m_shift) {
@@ -64,7 +64,7 @@ class LightningBolt {
     shift = m_shift;
   }
   void generateSegments() {
-    ArrayList<LightningSegment> lightningList = new ArrayList<LightningSegment>();
+    ArrayList <LightningSegment> lightningList = new ArrayList <LightningSegment>();
     
     while (y < height) {
       float x1 = x+(int)(Math.random()*15)-7+shift;
@@ -80,7 +80,7 @@ class LightningBolt {
 }
 
 class MainBranch extends LightningBolt {
-  ArrayList<SecondaryBranch> branches = new ArrayList<SecondaryBranch>();
+  ArrayList <SecondaryBranch> branches = new ArrayList <SecondaryBranch>();
   
   MainBranch(float m_x, float m_y, float m_shift) {
     super(m_x, m_y, m_shift);
@@ -88,7 +88,7 @@ class MainBranch extends LightningBolt {
   }
   
   void generateSegments() {
-    ArrayList<LightningSegment> lightningList = new ArrayList<LightningSegment>();
+    ArrayList <LightningSegment> lightningList = new ArrayList <LightningSegment>();
     
     while (y < height) {
       float x1 = x+(int)(Math.random()*15)-7+shift;
