@@ -22,7 +22,8 @@ void draw() {
   background(50, 50, 50);
   lightningBolt = new MainBranch(width/2, 0, 0);
   for (LightningSegment seg : lightningBolt.lightningSegments) {
-    seg.drawSegment();
+    if (seg !=null)
+      seg.drawSegment();
   }
   lightningBolt.drawBranches();
 }
