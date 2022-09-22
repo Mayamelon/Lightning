@@ -34,11 +34,11 @@ void mousePressed() {
 }
 
 class LightningSegment {
-  float x0, y0, x1, y1, shift;
+  int x0, y0, x1, y1, shift;
   color myColor;
   int weight;
 
-  LightningSegment(float m_x0, float m_y0, float m_x1, float m_y1, color m_color, int m_weight) {
+  LightningSegment(int m_x0, int m_y0, int m_x1, int m_y1, color m_color, int m_weight) {
     x0 = m_x0;
     y0 = m_y0;
     x1 = m_x1;
@@ -57,9 +57,9 @@ class LightningSegment {
 class LightningBolt {
   LightningSegment[] lightningSegments;
   ArrayList <LightningBolt> branches = new ArrayList <LightningBolt>();
-  float x, y, shift;
+  int x, y, shift;
 
-  LightningBolt(float m_x, float m_y, float m_shift) {
+  LightningBolt(int m_x, int m_y, int m_shift) {
     x = m_x;
     y = m_y;
     shift = m_shift;
@@ -68,8 +68,8 @@ class LightningBolt {
     ArrayList <LightningSegment> lightningList = new ArrayList <LightningSegment>();
 
     while (y < height) {
-      float x1 = x+(int)(Math.random()*15)-7+shift;
-      float y1 = y+(int)(Math.random()*8);
+      int x1 = x+(int)(Math.random()*15)-7+shift;
+      int y1 = y+(int)(Math.random()*8);
       LightningSegment segment = new LightningSegment(x, y, x1, y1, boltColor, 2);
       lightningList.add(segment);
       x = x1;
@@ -83,7 +83,7 @@ class LightningBolt {
 class MainBranch extends LightningBolt {
   ArrayList <SecondaryBranch> branches = new ArrayList <SecondaryBranch>();
 
-  MainBranch(float m_x, float m_y, float m_shift) {
+  MainBranch(int m_x, int m_y, int m_shift) {
     super(m_x, m_y, m_shift);
     generateSegments();
   }
@@ -92,8 +92,8 @@ class MainBranch extends LightningBolt {
     ArrayList <LightningSegment> lightningList = new ArrayList <LightningSegment>();
 
     while (y < height) {
-      float x1 = x+(int)(Math.random()*15)-7+shift;
-      float y1 = y+(int)(Math.random()*8);
+      int x1 = x+(int)(Math.random()*15)-7+shift;
+      int y1 = y+(int)(Math.random()*8);
       LightningSegment segment = new LightningSegment(x, y, x1, y1, boltColor, 5);
       lightningList.add(segment);
       x = x1;
@@ -116,7 +116,7 @@ class MainBranch extends LightningBolt {
 }
 
 class SecondaryBranch extends LightningBolt {
-  SecondaryBranch(float m_x, float m_y, float m_shift) {
+  SecondaryBranch(int m_x, int m_y, int m_shift) {
     super(m_x, m_y, m_shift);
     generateSegments();
   }
