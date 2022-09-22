@@ -109,7 +109,8 @@ class MainBranch extends LightningBolt {
   void drawBranches() {
     for (SecondaryBranch branch : branches) {
       for (int i = 0; i < branch.lightningSegments.length; i++) {
-        branch.lightningSegments[i].drawSegment();
+        if (branch.lightningSegments[i] != null)
+          branch.lightningSegments[i].drawSegment();
       }
     }
   }
