@@ -1,5 +1,5 @@
 int i = 0;
- MainBranch lightningBolt = new MainBranch(width/2, 0, 0);
+MainBranch lightningBolt = new MainBranch(width/2, 0, 0);
 
 color boltColor;
 
@@ -8,6 +8,7 @@ void setup() {
   background(50, 50, 50);
   frameRate(2);
   boltColor =  color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
+  lightningBolt = new MainBranch(width/2, 0, 0);
 }
 
 void draw() {
@@ -36,7 +37,7 @@ class LightningSegment {
   float x0, y0, x1, y1, shift;
   color myColor;
   int weight;
-  
+
   LightningSegment(float m_x0, float m_y0, float m_x1, float m_y1, color m_color, int m_weight) {
     x0 = m_x0;
     y0 = m_y0;
@@ -45,7 +46,7 @@ class LightningSegment {
     myColor = m_color;
     weight = m_weight;
   }
-  
+
   void drawSegment() {
     stroke(myColor);
     strokeWeight(weight);
@@ -57,7 +58,7 @@ class LightningBolt {
   LightningSegment[] lightningSegments;
   ArrayList <LightningBolt> branches = new ArrayList <LightningBolt>();
   float x, y, shift;
-  
+
   LightningBolt(float m_x, float m_y, float m_shift) {
     x = m_x;
     y = m_y;
@@ -65,7 +66,7 @@ class LightningBolt {
   }
   void generateSegments() {
     ArrayList <LightningSegment> lightningList = new ArrayList <LightningSegment>();
-    
+
     while (y < height) {
       float x1 = x+(int)(Math.random()*15)-7+shift;
       float y1 = y+(int)(Math.random()*8);
@@ -81,15 +82,15 @@ class LightningBolt {
 
 class MainBranch extends LightningBolt {
   ArrayList <SecondaryBranch> branches = new ArrayList <SecondaryBranch>();
-  
+
   MainBranch(float m_x, float m_y, float m_shift) {
     super(m_x, m_y, m_shift);
     generateSegments();
   }
-  
+
   void generateSegments() {
     ArrayList <LightningSegment> lightningList = new ArrayList <LightningSegment>();
-    
+
     while (y < height) {
       float x1 = x+(int)(Math.random()*15)-7+shift;
       float y1 = y+(int)(Math.random()*8);
@@ -104,7 +105,7 @@ class MainBranch extends LightningBolt {
     lightningSegments = new LightningSegment[lightningList.size()];
     lightningList.toArray(lightningSegments);
   }
-  
+
   void drawBranches() {
     for (SecondaryBranch branch : branches) {
       for (int i = 0; i < branch.lightningSegments.length; i++) {
